@@ -1,0 +1,90 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block title %}{{ action }} Note - Course Notes App{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <img src="{% static 'images/form-icon.png' %}" alt="Form Icon" class="page-icon">
+    <h1>{{ action }} Course Note</h1>
+    <p>Fill in the details below to {{ action|lower }} your note</p>
+</div>
+
+<div class="form-container">
+    <form method="post" class="note-form">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="form-errors">
+                <h3>Please correct the following errors:</h3>
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="{{ form.course.id_for_label }}">{{ form.course.label }}</label>
+            {{ form.course }}
+            {% if form.course.help_text %}
+                <small class="help-text">{{ form.course.help_text }}</small>
+            {% endif %}
+            {% if form.course.errors %}
+                <span class="error-text">{{ form.course.errors.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+            {{ form.title }}
+            {% if form.title.help_text %}
+                <small class="help-text">{{ form.title.help_text }}</small>
+            {% endif %}
+            {% if form.title.errors %}
+                <span class="error-text">{{ form.title.errors.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+            {{ form.content }}
+            {% if form.content.help_text %}
+                <small class="help-text">{{ form.content.help_text }}</small>
+            {% endif %}
+            {% if form.content.errors %}
+                <span class="error-text">{{ form.content.errors.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.status.id_for_label }}">{{ form.status.label }}</label>
+            {{ form.status }}
+            {% if form.status.help_text %}
+                <small class="help-text">{{ form.status.help_text }}</small>
+            {% endif %}
+            {% if form.status.errors %}
+                <span class="error-text">{{ form.status.errors.0 }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">{{ action }} Note</button>
+            <a href="{% url 'index' %}" class="btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<div class="form-tips">
+    <h3>💡 Tips for Great Notes:</h3>
+    <ul>
+        <li>Use clear, descriptive titles that summarize the topic</li>
+        <li>Include course code for easy organization</li>
+        <li>Structure your content with headings and bullet points</li>
+        <li>Mark status as "Draft" while working, "Complete" when finished</li>
+    </ul>
+</div>
+{% endblock %}

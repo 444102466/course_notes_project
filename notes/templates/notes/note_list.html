@@ -1,0 +1,56 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block title %}All Notes - Course Notes App{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <img src="{% static 'images/notes-icon.png' %}" alt="Notes Icon" class="page-icon">
+    <h1>Course Notes App</h1>
+    <p>Manage your course notes efficiently</p>
+</div>
+
+{% if notes %}
+    <div class="notes-count">
+        <p>Total Notes: <strong>{{ total_notes }}</strong></p>
+    </div>
+
+    <div class="notes-table-container">
+        <table class="notes-table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in notes %}
+                <tr>
+                    <td><span class="course-tag">{{ note.course }}</span></td>
+                    <td>{{ note.title }}</td>
+                    <td>{{ note.date|date:"M d, Y" }}</td>
+                    <td>
+                        <span class="status-badge status-{{ note.status }}">
+                            {{ note.get_status_display }}
+                        </span>
+                    </td>
+                    <td class="actions-cell">
+                        <a href="{% url 'note_detail' note.pk %}" class="btn-action btn-view">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="empty-state">
+        <img src="{% static 'images/empty-notes.png' %}" alt="No Notes" class="empty-image">
+        <h2>No Notes Yet</h2>
+        <p>You haven't created any course notes yet.</p>
+        <a href="{% url 'note_create' %}" class="btn-primary">Create Your First Note</a>
+    </div>
+{% endif %}
+{% endblock %}
