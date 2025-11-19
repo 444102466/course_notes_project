@@ -19,4 +19,5 @@ class CourseNote(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ongoing')
     
 
-    
+    def __str__(self):
+        return f"{self.course} - {self.title}"
