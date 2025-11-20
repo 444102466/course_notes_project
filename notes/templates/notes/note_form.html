@@ -1,0 +1,36 @@
+{% extends "notes/base.html" %}
+{% block title %}Add New Note{% endblock %}
+{% block content %}
+
+    <section class="form-section">
+        <h2 class="form-title">Add New Course Note</h2>
+        <p class="form-subtitle">Create a new note to stay organized</p>
+
+        <form action="{% url 'notes:add' %}" method="post" class="note-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_course">Course</label>
+                {{ form.course }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_title">Note Title</label>
+                {{ form.title }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_content">Content</label>
+                {{ form.content }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <span class="plus-icon">+</span>
+                    Save Note
+                </button>
+                <a href="{% url 'notes:index' %}" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}
