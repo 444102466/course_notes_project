@@ -13,21 +13,30 @@
             <div class="form-group">
                 <label for="id_course">Course</label>
                 {{ form.course }}
+                {% if form.course.errors %}
+                <p class="error-text">{{ form.course.errors.0 }}</p>
+            {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="id_title">Note Title</label>
                 {{ form.title }}
+                {% if form.title.errors %}
+                <p class="error-text">{{ form.title.errors.0 }}</p>
+            {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="id_content">Content</label>
                 {{ form.content }}
+                {% if form.content.errors %}
+                    <p class="error-text">{{ form.content.errors.0 }}</p>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="id_status">Status</label>
-                {{ form.status }}
+                {{ form.status }}         
             </div>
 
             <div class="form-actions">
