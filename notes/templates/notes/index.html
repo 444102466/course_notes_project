@@ -3,13 +3,11 @@
 {% block title %}StudyMate - Home{% endblock %}
 
 {% block content %}
-    <!-- Welcome Section -->
     <section class="welcome-section">
         <h2 class="welcome-title">Hello, welcome back!</h2>
         <p class="welcome-subtitle">Manage your notes and stay organized</p>
     </section>
 
-    <!-- Notes Section -->
     <section class="notes-section">
         <div class="notes-header">
             <h3 class="section-title">Your Notes</h3>
@@ -20,7 +18,6 @@
             <div class="notes-grid">
                 {% for note in notes %}
                     <div class="note-card">
-                        <!-- Note Icon -->
                         <div class="note-icon">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,7 +28,6 @@
                             </svg>
                         </div>
 
-                        <!-- Course Badge -->
                         <div class="course-badge">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2"/>
@@ -40,15 +36,12 @@
                             {{ note.course }}
                         </div>
 
-                        <!-- Status Badge -->
                         <span class="status-badge {% if note.status == 'completed' %}status-completed{% else %}status-ongoing{% endif %}">
                             {% if note.status == 'completed' %}completed{% else %}on going{% endif %}
                         </span>
 
-                        <!-- Note Title -->
                         <h4 class="note-title">{{ note.title }}</h4>
 
-                        <!-- Show Details Button -->
                         <a href="{% url 'notes:detail' note.id %}" class="btn-show-details">
                             Show Details
                             <span class="arrow">→</span>
