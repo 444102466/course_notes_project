@@ -1,13 +1,15 @@
 {% extends "notes/base.html" %}
-{% block title %}Course Notes - Home{% endblock %}
-{% block content %}
 
-<section class="welcome-section">
+{% block title %}StudyMate - Home{% endblock %}
+
+{% block content %}
+    <!-- Welcome Section -->
+    <section class="welcome-section">
         <h2 class="welcome-title">Hello, welcome back!</h2>
         <p class="welcome-subtitle">Manage your notes and stay organized</p>
     </section>
 
-
+    <!-- Notes Section -->
     <section class="notes-section">
         <div class="notes-header">
             <h3 class="section-title">Your Notes</h3>
@@ -29,7 +31,7 @@
                             </svg>
                         </div>
 
-
+                        <!-- Course Badge -->
                         <div class="course-badge">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2"/>
@@ -38,17 +40,15 @@
                             {{ note.course }}
                         </div>
 
+                        <!-- Status Badge -->
+                        <span class="status-badge {% if note.status == 'completed' %}status-completed{% else %}status-ongoing{% endif %}">
+                            {% if note.status == 'completed' %}completed{% else %}on going{% endif %}
+                        </span>
 
-                        {% if note.content|length > 200 %}
-                            <span class="status-badge status-completed">completed</span>
-                        {% else %}
-                            <span class="status-badge status-ongoing">on going</span>
-                        {% endif %}
-
-
+                        <!-- Note Title -->
                         <h4 class="note-title">{{ note.title }}</h4>
 
-
+                        <!-- Show Details Button -->
                         <a href="{% url 'notes:detail' note.id %}" class="btn-show-details">
                             Show Details
                             <span class="arrow">→</span>

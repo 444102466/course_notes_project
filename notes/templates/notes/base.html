@@ -1,27 +1,21 @@
 {% load static %}
-<<<<<<< HEAD
-
-=======
->>>>>>> d7cfa24b6a7958328dc08c5893c0fcf2512cc7bf
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <title>{% block title %}Course Notes{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}StudyMate{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'notes/style.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="header-left">
             <div class="logo-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2V2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <h1 class="site-title">Course Notes</h1>
+    <img src="{% static 'notes/Logo.png' %}" alt="StudyMate logo" width="32" height="32">
+</div>
+            <h1 class="site-title">StudyMate</h1>
         </div>
+        
         <div class="header-right">
             <a href="{% url 'notes:add' %}" class="btn-add-note">
                 <span class="plus-icon">+</span>
@@ -29,57 +23,14 @@
             </a>
         </div>
     </header>
+
     <main class="main-content">
         {% block content %}
         {% endblock %}
     </main>
+
     <footer class="footer">
-        <p>IS424 Web Application Development - Course Notes App</p>
+        <p>IS424 Web Application Development - StudyMate App</p>
     </footer>
 </body>
 </html>
-=======
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Course Notes App{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'notes/css/style.css' %}">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="{% static 'images/logo.png' %}" alt="Course Notes Logo" class="logo">
-                <h1>Course Notes App</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{% url 'index' %}" class="nav-link">All Notes</a></li>
-                <li><a href="{% url 'note_create' %}" class="nav-link btn-primary">Add Note</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="main-content">
-        <div class="container">
-            {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            {% block content %}
-            {% endblock %}
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Course Notes App | IS424 Web Application Development</p>
-            <p>King Saud University - College of Computer and Information Sciences</p>
-        </div>
-    </footer>
-</body>
-</html>
->>>>>>> d7cfa24b6a7958328dc08c5893c0fcf2512cc7bf
