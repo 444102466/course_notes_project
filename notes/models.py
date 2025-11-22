@@ -1,10 +1,7 @@
 from django.db import models
 
 class Note(models.Model):
-    """
-    Model representing a course note.
-    Fields: course, title, content, date, status
-    """
+   
     STATUS_CHOICES = [
         ('completed', 'Completed'),
         ('ongoing', 'On going'),
