@@ -23,7 +23,6 @@ def delete_note(request, note_id):
     if request.method == "POST":
         note = get_object_or_404(Note, pk=note_id)
         note.delete()
-        messages.success(request, "Note deleted successfully!")
         return redirect("notes:index")
     else:
         return redirect("notes:confirm_delete", note_id=note_id)
